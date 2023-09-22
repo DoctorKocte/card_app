@@ -17,8 +17,8 @@ class CardSquare extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final top = isActive ? 30.0 : 10.0;
-    final bottom = isActive ? 30.0 : 10.0;
+    final top = isActive ? 10.0 : 20.0;
+    final bottom = isActive ? 10.0 : 20.0;
 
     return Transform.rotate(
         angle: isActive ? 0 : -20 / 180,
@@ -46,8 +46,7 @@ class CardSquare extends StatelessWidget {
           ),
           child: Stack(children: [
             Container(
-                padding: EdgeInsets.only(
-                    left: 12, right: 12, top: isActive ? 80 : 40),
+                padding: const EdgeInsets.only(left: 12, right: 12, top: 80),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -55,7 +54,7 @@ class CardSquare extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       child: Text(
                         card.cardNumber,
-                        overflow: TextOverflow.fade,
+                        overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           fontFamily: 'CourierNew',
                           fontSize: 20,

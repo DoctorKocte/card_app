@@ -1,4 +1,4 @@
-import 'package:animated_view_flutter/components/page_view.dart';
+import 'package:animated_view_flutter/components/card_page_view.dart';
 import 'package:flutter/material.dart';
 
 class CardsScreen extends StatelessWidget {
@@ -27,9 +27,10 @@ class CardsScreen extends StatelessWidget {
         // ),
       ),
       body: SafeArea(
+          bottom: false,
           child: ListView(
-        children: const [CardsPageView()],
-      )),
+            children: const [CardsPageView()],
+          )),
     );
   }
 }
