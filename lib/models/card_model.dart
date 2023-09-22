@@ -15,5 +15,6 @@ class CardModel {
 var cards = [
   CardModel(cardNumber: '7812 2139 0823 XXXX', validDate: '05/24', cvvCode: '09X', cardImage: 'assets/images/design1.jpeg'),
   CardModel(cardNumber: '5436 2664 2367 XXXX', validDate: '06/26', cvvCode: '07X', cardImage: 'assets/images/design2.jpeg'),
-  CardModel(cardNumber: '2146 8653 2425 XXXX', validDate: '02/27', cvvCode: '21X', cardImage: 'assets/images/design3.jpeg')
+  CardModel(cardNumber: '2146 8653 2425 XXXX', validDate: '02/27', cvvCode: '21X', cardImage: 'assets/images/design3.jpeg'),
+  CardModel(cardNumber: '1111 2222 3333 XXXX', validDate: '04/23', cvvCode: '27X')
 ];

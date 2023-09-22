@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:animated_view_flutter/components/page_view.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +7,7 @@ class CardsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 38, 38, 38),
+      backgroundColor: const Color.fromARGB(255, 28, 28, 28),
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Cards'),
@@ -30,14 +28,7 @@ class CardsScreen extends StatelessWidget {
       ),
       body: SafeArea(
           child: ListView(
-        children: const[
-          Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 40,
-            ),
-            child: CardsPageView()
-          )
-        ],
+        children: const [CardsPageView()],
       )),
     );
   }

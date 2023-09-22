@@ -34,21 +34,27 @@ class _CardsPageViewState extends State<CardsPageView> {
     return Column(
       children: [
         SizedBox(
-          height: 240,
-          child: PageView.builder(
-            physics: const BouncingScrollPhysics(),
-            controller: pageController,
-            itemCount: cards.length,
-            itemBuilder: (context, index) {
-              return CardSquare(
-                active: index == currentPage,
-                index: index,
-                card: cards[index]
-              );
-            },
-          ),
-        )
-        //Spacer()
+            height: 360,
+            child: Container(
+              decoration: const BoxDecoration(boxShadow: [
+                BoxShadow(
+                    color: Colors.white24,
+                    blurRadius: 24,
+                    blurStyle: BlurStyle.outer)
+              ]),
+              child: PageView.builder(
+                physics: const BouncingScrollPhysics(),
+                controller: pageController,
+                scrollDirection: Axis.vertical,
+                itemCount: cards.length,
+                itemBuilder: (context, index) {
+                  return CardSquare(
+                      isActive: index == currentPage,
+                      index: index,
+                      card: cards[index]);
+                },
+              ),
+            ))
       ],
     );
   }
