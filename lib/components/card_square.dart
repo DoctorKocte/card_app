@@ -46,62 +46,57 @@ class CardSquare extends StatelessWidget {
                 : [],
             borderRadius: appRadius.radius16,
             border: Border.all(
-                color: isActive ? colorScheme.background.white40 : colorScheme.background.contrast),
+                color: isActive
+                    ? colorScheme.background.white40
+                    : colorScheme.background.contrast),
             image: DecorationImage(
-                image: (card.cardImage != null) 
-                  ? card.cardImage!.image
-                  : Assets.images.design1.image().image,
+                image: (card.cardImage != null)
+                    ? card.cardImage!.image
+                    : Assets.images.design1.image().image,
                 fit: BoxFit.cover),
           ),
-          child: FittedBox(child: 
-           Stack(children: [
-            Container(
-                padding: EdgeInsets.only(left: spacer.sp12, right: spacer.sp12, top: spacer.sp80),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: spacer.sp16),
-                      child: Text(
-                        card.cardNumber,
-                        overflow: TextOverflow.ellipsis,
-                        style: textStyles.h4,
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'VALID THRU',
-                              style: textStyles.h6
-                            ),
-                            Text(
-                              card.validDate,
-                              style: textStyles.h6
-                            )
-                          ],
+          child: Stack(children: [
+            LayoutBuilder(builder: (context, constraints) {
+              return Padding(
+                  padding: EdgeInsets.only(
+                      left: spacer.sp12,
+                      right: spacer.sp12,
+                      top: (constraints.maxHeight / 2.5)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: spacer.sp16),
+                        child: Text(
+                          card.cardNumber,
+                          overflow: TextOverflow.ellipsis,
+                          style: textStyles.h4,
                         ),
-                        Padding(
-                            padding: EdgeInsets.symmetric(horizontal: spacer.sp20),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'CVV',
-                                  style: textStyles.h6
-                                ),
-                                Text(
-                                  card.cvvCode,
-                                  style: textStyles.h6
-                                )
-                              ],
-                            ))
-                      ],
-                    )
-                  ],
-                )),
+                      ),
+                      Row(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('VALID THRU', style: textStyles.h6),
+                              Text(card.validDate, style: textStyles.h6)
+                            ],
+                          ),
+                          Padding(
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: spacer.sp20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('CVV', style: textStyles.h6),
+                                  Text(card.cvvCode, style: textStyles.h6)
+                                ],
+                              ))
+                        ],
+                      )
+                    ],
+                  ));
+            }),
             Container(
                 child: isActive
                     ? Container(height: 0)
@@ -112,7 +107,7 @@ class CardSquare extends StatelessWidget {
                               color: colorScheme.background.shadow),
                         ),
                       )),
-          ])),
+          ]),
         ));
   }
 }
