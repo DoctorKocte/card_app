@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:animated_view_flutter/models/card_model.dart';
 import 'package:flutter/material.dart';
 import 'package:open_ui/theme/app_theme.dart';
+import 'package:animated_view_flutter/assets/assets.gen.dart';
 
 class CardSquare extends StatelessWidget {
   const CardSquare(
@@ -47,9 +48,9 @@ class CardSquare extends StatelessWidget {
             border: Border.all(
                 color: isActive ? colorScheme.background.white40 : colorScheme.background.contrast),
             image: DecorationImage(
-                image: (card.cardImage != null)
-                    ? AssetImage(card.cardImage!)
-                    : const AssetImage('assets/images/design1.jpeg'),
+                image: (card.cardImage != null) 
+                  ? card.cardImage!.image
+                  : Assets.images.design1.image().image,
                 fit: BoxFit.cover),
           ),
           child: FittedBox(child: 

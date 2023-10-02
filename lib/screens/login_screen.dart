@@ -1,3 +1,4 @@
+import 'package:animated_view_flutter/assets/assets.gen.dart';
 import 'package:animated_view_flutter/screens/cards_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:open_ui/theme/app_theme.dart';
@@ -17,8 +18,7 @@ class LoginScreen extends StatelessWidget {
         body: Padding(
             padding: EdgeInsets.symmetric(vertical: spacer.sp40, horizontal: spacer.sp20),
             child: Column(children: [
-              Image.asset('assets/images/card5.png',
-                  height: MediaQuery.sizeOf(context).height * 0.4),
+              Assets.images.card5.image(height: MediaQuery.sizeOf(context).height * 0.4),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: spacer.sp20),
                 child: GradientText(
@@ -43,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     label: GradientText(
                       'Go to your cards',
-                      style:textStyles.subtitle,
+                      style: textStyles.subtitle,
                       //лучше через reversed.toList() или создать новый цвет?
                       gradient: LinearGradient(colors: colorScheme.gradients.gold.reversed.toList()),
                     )),
