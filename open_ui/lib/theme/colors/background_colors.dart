@@ -48,7 +48,7 @@ class BackgroundColors {
   static const MixedColor _secondary = MixedColor(light: Color.fromARGB(255, 236, 236, 236), dark: Color.fromARGB(255, 26, 26, 26));
   static const MixedColor _contrast = MixedColor(light: Colors.white, dark: Colors.black);
   static const MixedColor _shadow = MixedColor(light: Colors.black38, dark: Colors.black54);
-  static const MixedColor _primaryGrey = MixedColor(light: Color.fromARGB(255, 180, 180, 180), dark: Color.fromARGB(172, 10, 10, 10));
+  static const MixedColor _primaryGrey = MixedColor(light: Color.fromARGB(255, 180, 180, 180), dark: Color.fromARGB(255, 14, 14, 14));
   static final Color _white40 = Colors.white.withAlpha(40);
   static const Color _success = Color.fromARGB(255, 41, 77, 43);
   static const Color _failure = Color.fromARGB(255, 80, 39, 37);

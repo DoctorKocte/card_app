@@ -13,6 +13,6 @@ class TextColors {
   final Color primary;
   final Color white;
 
-  static const MixedColor _primary = MixedColor(light: Color.fromARGB(255, 0, 0, 0), dark: Colors.white70);
+  static const MixedColor _primary = MixedColor(light: Color.fromARGB(255, 0, 0, 0), dark: Color.fromARGB(255, 192, 192, 192));
   static const Color _white = Colors.white;
 }
