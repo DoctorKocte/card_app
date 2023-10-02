@@ -1,6 +1,7 @@
 import 'package:animated_view_flutter/models/card_model.dart';
 import 'package:animated_view_flutter/models/transaction_model.dart';
 import 'package:flutter/material.dart';
+import 'package:open_ui/theme/app_theme.dart';
 
 class CardInfoView extends StatelessWidget {
   const CardInfoView(
@@ -12,20 +13,23 @@ class CardInfoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+  final appTheme = AppTheme.of(context);
+  final spacer = appTheme.spacer;
+  final textStyles = appTheme.textStyles.withColor(appTheme.colorScheme.textColor.primary);
+
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(spacer.sp20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'card number: ${card.cardNumber}'.toUpperCase(),
-            style: const TextStyle(
-                fontFamily: 'CourierNew', fontSize: 18, color: Colors.white60),
+            style: textStyles.h5
           ),
           Text(
             'card holder: ${card.cardHolder}'.toUpperCase(),
-            style: const TextStyle(
-                fontFamily: 'CourierNew', fontSize: 18, color: Colors.white60),
+            style: textStyles.h5,
           ),
           ListView.builder(
             shrinkWrap: true,
@@ -51,21 +55,27 @@ class TransactionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+  final appTheme = AppTheme.of(context);
+  final colorScheme = appTheme.colorScheme;
+  final spacer = appTheme.spacer;
+  final appRadius = appTheme.radius;
+
     return Column(
       children: [
         Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
+            padding: EdgeInsets.symmetric(vertical: spacer.sp10),
             child: Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: appRadius.radius16,
                     color: currentTransactions[index].amount < 0
-                        ? const Color.fromARGB(255, 80, 39, 37)
-                        : const Color.fromARGB(255, 41, 77, 43)),
+                        ? colorScheme.background.failure
+                        : colorScheme.background.success),
                 width: MediaQuery.of(context).size.width,
                 height: 70,
-                padding: const EdgeInsets.symmetric(vertical: 14),
+                padding: EdgeInsets.symmetric(vertical: spacer.sp12),
                 child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    padding: EdgeInsets.symmetric(horizontal: spacer.sp12),
                     child: Row(children: [
                       Expanded(
                           child: Column(

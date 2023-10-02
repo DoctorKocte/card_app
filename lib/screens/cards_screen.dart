@@ -1,17 +1,21 @@
 import 'package:animated_view_flutter/components/card_page_view.dart';
 import 'package:flutter/material.dart';
+import 'package:open_ui/theme/app_theme.dart';
 
 class CardsScreen extends StatelessWidget {
   const CardsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = AppTheme.of(context).colorScheme;
+
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 28, 28, 28),
+      backgroundColor: colorScheme.background.primary,
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Cards'),
-        backgroundColor: Colors.black,
+        backgroundColor: colorScheme.background.contrast,
+        foregroundColor: colorScheme.textColor.primary,
         // flexibleSpace: Container(
         //   decoration: const BoxDecoration(
         //     gradient: LinearGradient(

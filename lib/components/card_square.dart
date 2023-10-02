@@ -2,14 +2,15 @@ import 'dart:ui';
 
 import 'package:animated_view_flutter/models/card_model.dart';
 import 'package:flutter/material.dart';
+import 'package:open_ui/theme/app_theme.dart';
 
 class CardSquare extends StatelessWidget {
   const CardSquare(
       {Key? key,
       required this.isActive,
       required this.index,
-      required this.card})
-      : super(key: key);
+      required this.card
+  }) : super(key: key);
 
   final bool isActive;
   final int index;
@@ -17,49 +18,53 @@ class CardSquare extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final top = isActive ? 10.0 : 20.0;
-    final bottom = isActive ? 10.0 : 20.0;
+    const durationMilliseconds = Duration(milliseconds: 200);
+
+    final appTheme = AppTheme.of(context);
+    final colorScheme = appTheme.colorScheme;
+    final spacer = appTheme.spacer;
+    final appRadius = appTheme.radius;
+    final textStyles = appTheme.textStyles.withColor(Colors.white);
+    final top = isActive ? spacer.sp10 : spacer.sp20;
+    final bottom = isActive ? spacer.sp10 : spacer.sp20;
 
     return Transform.rotate(
         angle: isActive ? 0 : -20 / 180,
         child: AnimatedContainer(
           clipBehavior: Clip.hardEdge,
-          duration: const Duration(milliseconds: 200),
+          duration: durationMilliseconds,
           margin: EdgeInsets.only(
             top: top,
             bottom: bottom,
-            right: 40,
-            left: 40,
+            right: spacer.sp40,
+            left: spacer.sp40,
           ),
           decoration: BoxDecoration(
             boxShadow: isActive
-                ? [const BoxShadow(blurRadius: 16, color: Colors.black54)]
+                ? [BoxShadow(blurRadius: spacer.sp16, color: colorScheme.background.shadow)]
                 : [],
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: appRadius.radius16,
             border: Border.all(
-                color: isActive ? Colors.white.withOpacity(0.4) : Colors.black),
+                color: isActive ? colorScheme.background.white40 : colorScheme.background.contrast),
             image: DecorationImage(
                 image: (card.cardImage != null)
                     ? AssetImage(card.cardImage!)
                     : const AssetImage('assets/images/design1.jpeg'),
                 fit: BoxFit.cover),
           ),
-          child: Stack(children: [
+          child: FittedBox(child: 
+           Stack(children: [
             Container(
-                padding: const EdgeInsets.only(left: 12, right: 12, top: 80),
+                padding: EdgeInsets.only(left: spacer.sp12, right: spacer.sp12, top: spacer.sp80),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      padding: EdgeInsets.symmetric(vertical: spacer.sp16),
                       child: Text(
                         card.cardNumber,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontFamily: 'CourierNew',
-                          fontSize: 20,
-                          color: Colors.white70,
-                        ),
+                        style: textStyles.h4,
                       ),
                     ),
                     Row(
@@ -67,44 +72,28 @@ class CardSquare extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               'VALID THRU',
-                              style: TextStyle(
-                                fontFamily: 'CourierNew',
-                                fontSize: 14,
-                                color: Colors.white70,
-                              ),
+                              style: textStyles.h6
                             ),
                             Text(
                               card.validDate,
-                              style: const TextStyle(
-                                fontFamily: 'CourierNew',
-                                fontSize: 14,
-                                color: Colors.white70,
-                              ),
+                              style: textStyles.h6
                             )
                           ],
                         ),
                         Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            padding: EdgeInsets.symmetric(horizontal: spacer.sp20),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
+                                Text(
                                   'CVV',
-                                  style: TextStyle(
-                                    fontFamily: 'CourierNew',
-                                    fontSize: 14,
-                                    color: Colors.white70,
-                                  ),
+                                  style: textStyles.h6
                                 ),
                                 Text(
                                   card.cvvCode,
-                                  style: const TextStyle(
-                                    fontFamily: 'CourierNew',
-                                    fontSize: 14,
-                                    color: Colors.white70,
-                                  ),
+                                  style: textStyles.h6
                                 )
                               ],
                             ))
@@ -119,10 +108,10 @@ class CardSquare extends StatelessWidget {
                         filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.2)),
+                              color: colorScheme.background.shadow),
                         ),
                       )),
-          ]),
+          ])),
         ));
   }
 }

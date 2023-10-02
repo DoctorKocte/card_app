@@ -1,52 +1,51 @@
 import 'package:animated_view_flutter/screens/cards_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:open_ui/theme/app_theme.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+     final appTheme = AppTheme.of(context);
+     final colorScheme = appTheme.colorScheme;
+     final spacer = appTheme.spacer;
+     final textStyles = appTheme.textStyles;
+    
     return Scaffold(
-        backgroundColor: const Color.fromARGB(255, 38, 38, 38),
+        backgroundColor: colorScheme.background.primary,
         body: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+            padding: EdgeInsets.symmetric(vertical: spacer.sp40, horizontal: spacer.sp20),
             child: Column(children: [
               Image.asset('assets/images/card5.png',
                   height: MediaQuery.sizeOf(context).height * 0.4),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: spacer.sp20),
                 child: GradientText(
                   'Online wallet for your cards',
-                  style: TextStyle(fontSize: 40, fontFamily: 'SidewareTrial'),
-                  gradient: LinearGradient(colors: [
-                    Color.fromARGB(255, 255, 232, 148),
-                    Color.fromARGB(255, 238, 211, 102),
-                    Color.fromARGB(255, 128, 96, 0),
-                  ]),
+                  style: textStyles.title,
+                  gradient: LinearGradient(colors: colorScheme.gradients.gold),
                 ),
               ),
               const Spacer(),
               Row(children: [
                 const Spacer(),
                 FloatingActionButton.extended(
+                  backgroundColor: colorScheme.background.secondary,
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const CardsScreen()
                       ));
                     },
-                    icon: const Icon(Icons.arrow_forward,
-                        color: Color.fromARGB(255, 128, 96, 0)),
-                    label: const GradientText(
+                    icon: Icon(
+                      Icons.arrow_forward,
+                      color: colorScheme.icons.gold
+                    ),
+                    label: GradientText(
                       'Go to your cards',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: 'SidewareTrial',
-                      ),
-                      gradient: LinearGradient(colors: [
-                        Color.fromARGB(255, 128, 96, 0),
-                        Color.fromARGB(255, 238, 211, 102),
-                        Color.fromARGB(255, 255, 232, 148),
-                      ]),
+                      style:textStyles.subtitle,
+                      //лучше через reversed.toList() или создать новый цвет?
+                      gradient: LinearGradient(colors: colorScheme.gradients.gold.reversed.toList()),
                     )),
               ])
             ])));

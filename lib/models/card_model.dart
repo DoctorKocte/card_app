@@ -6,6 +6,7 @@ class CardModel {
     required this.validDate,
     required this.cvvCode,
     this.cardImage
+    //this.transactions
   });
 
   int cardID;
@@ -14,7 +15,7 @@ class CardModel {
   String validDate;
   String cvvCode;
   String? cardImage;
-  //List<TransactionModel> transactions;
+  //List<TransactionModel> transactions = transactions.where((element) => element.cardID == cardID).toList();
 }
 
 var cards = [

@@ -1,5 +1,6 @@
 import 'package:animated_view_flutter/screens/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:open_ui/theme/adaptive_theme.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,16 +11,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'SFProText',
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          secondary: Colors.black54,
-        ),
-        pageTransitionsTheme: const PageTransitionsTheme(builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder()})
-      ),
-      home: const LoginScreen(),
-    );
+   return AdaptiveTheme(
+      builder: (context, theme) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: const LoginScreen(),
+        theme: theme.materialTheme,
+      ));
   }
 }
